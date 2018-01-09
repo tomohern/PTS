@@ -3,7 +3,16 @@ echo Enter Desired Username:
 read uname
 adduser $uname
 usermod -aG sudo $uname
-su - $uname
-wget $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4)
+apt update
+apt install openjdk-8-jre-headless
 apt install unzip
+curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr/local/bin/profittrailer
+chmod +x /usr/local/bin/profittrailer
+curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
+chmod +x /usr/local/bin/loadprofile
+su - $uname
+curl $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4)
 unzip ProfitTrailer.zip
+mv ProfitTrailer.zip ProfitTrailer_$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8).zip
+mkdir app.prop
+cp ~/ProfitTrailer/application.properties ~/app.prop/application.properties.DEFAULT
