@@ -1,0 +1,9 @@
+#!/bin/bash
+echo Enter Desired Username:
+read uname
+adduser $uname
+usermod -aG sudo $uname
+su - $uname
+wget $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4)
+apt install unzip
+unzip ProfitTrailer.zip
