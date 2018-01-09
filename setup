@@ -10,9 +10,11 @@ curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr
 chmod +x /usr/local/bin/profittrailer
 curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
 chmod +x /usr/local/bin/loadprofile
+#curl $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4) > /home/$uname/ProfitTrailer.zip
+ver=$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8)
+runuser -l  $uname -c 'curl https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip  > /home/$uname/ProfitTrailer.zip'
+runuser -l  $uname -c 'unzip /home/$uname/ProfitTrailer.zip'
+runuser -l  $uname -c 'mv ProfitTrailer.zip ProfitTrailer_$ver.zip'
+runuser -l  $uname -c 'mkdir /home/$uname/app.prop'
+runuser -l  $uname -c 'cp /home/$uname/ProfitTrailer/application.properties /home/$uname/app.prop/application.properties.DEFAULT'
 su - $uname
-wget $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4)
-unzip ProfitTrailer.zip
-mv ProfitTrailer.zip ProfitTrailer_$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8).zip
-mkdir app.prop
-cp ~/ProfitTrailer/application.properties ~/app.prop/application.properties.DEFAULT
