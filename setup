@@ -11,7 +11,7 @@ chmod +x /usr/local/bin/profittrailer
 curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
 chmod +x /usr/local/bin/loadprofile
 su - $uname
-curl $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4)
+wget $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4)
 unzip ProfitTrailer.zip
 mv ProfitTrailer.zip ProfitTrailer_$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8).zip
 mkdir app.prop
