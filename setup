@@ -4,6 +4,7 @@ read uname
 adduser $uname
 usermod -aG sudo $uname
 apt update
+unattended-upgrades -d
 apt install openjdk-8-jre-headless
 apt install unzip
 curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr/local/bin/profittrailer
