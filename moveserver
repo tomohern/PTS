@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Replace DestinationServerPassword, UserName, and DesintationServer as needed. 
+#
+zip -r pt.zip *
+sshpass -v -p "DestinationServerPassword" sftp -oBatchMode=no -b - UserName@DesintationServer << !
+   put pt.zip
+   bye
+!
