@@ -1,0 +1,7 @@
+#curl $(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d\" -f4) > /home/$uname/ProfitTrailer.zip
+ver=$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8)
+curl https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip  > /home/$uname/ProfitTrailer.zip
+unzip /home/$uname/ProfitTrailer.zip
+mv ProfitTrailer.zip ProfitTrailer_$ver.zip
+mkdir /home/$uname/app.prop
+cp /home/$uname/ProfitTrailer/application.properties /home/$uname/app.prop/application.properties.DEFAULT
