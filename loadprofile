@@ -7,10 +7,10 @@ cp trading/PAIRS.properties trading/PAIRS.properties.backup
 cp trading/INDICATORS.properties trading/INDICATORS.properties.backup
 cp trading/DCA.properties trading/DCA.properties.backup
 cp ~/app.prop/application.properties.$PROFILE application.properties
-curl https://raw.githubusercontent.com/tomohern/PTS/$PROFILE/configuration.properties > configuration.properties
-curl https://raw.githubusercontent.com/tomohern/PTS/$PROFILE/INDICATORS.properties > trading/INDICATORS.properties
-curl https://raw.githubusercontent.com/tomohern/PTS/$PROFILE/PAIRS.properties > trading/PAIRS.properties
-curl https://raw.githubusercontent.com/tomohern/PTS/$PROFILE/DCA.properties > trading/DCA.properties
+curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/configuration.properties > configuration.properties
+curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/INDICATORS.properties > trading/INDICATORS.properties
+curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/PAIRS.properties > trading/PAIRS.properties
+curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/DCA.properties > trading/DCA.properties
 echo $PROFILE loaded.
 }
 function RestoreBackup {
@@ -22,7 +22,7 @@ cp trading/INDICATORS.properties.backup trading/INDICATORS.properties
 cp trading/DCA.properties.backup trading/DCA.properties
 echo Backups restored
 }
-VALUES=$(curl -s "https://api.github.com/repos/tomohern/PTS/branches" | grep '"name":' | sed -e 's/.*:\s\+"\([^"]\+\).*/\1/g' -e 's/master//g' -e 's/scripts//g' | tr '\n' ' ')
+VALUES=$(curl -s "https://api.github.com/repos/tomohern/PTSettings/branches" | grep '"name":' | sed -e 's/.*:\s\+"\([^"]\+\).*/\1/g' -e 's/master/Default/g' | tr '\n' ' ')
 OPTIONS="$VALUES Restore Quit"
 select opt in $OPTIONS; do
    if [ "$opt" = "Quit" ]; then
@@ -30,9 +30,15 @@ select opt in $OPTIONS; do
     exit
    elif [ "$opt" = "Restore" ]; then
     RestoreBackup
+    exit
+   elif [ "$opt" = "Default" ]; then
+    PROFILE=master
+    LoadProfile
+    exit
    elif [ "$opt" != "" ]; then
     PROFILE=$opt
     LoadProfile
+    exit
    else
     clear
     echo Bad Option
