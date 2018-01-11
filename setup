@@ -11,7 +11,7 @@ curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr
 chmod +x /usr/local/bin/profittrailer
 curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
 chmod +x /usr/local/bin/loadprofile
-curl https://raw.githubusercontent.com/tomohern/PTS/scripts/setup2 > /usr/local/bin/setup2
-chmod +x /usr/local/bin/setup2
-echo Please execute 'setup2'
+curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > /usr/local/bin/downloadLatestPT
+chmod +x /usr/local/bin/downloadLatestPT
+echo Please execute 'downloadLatestPT'
 su - $uname
