@@ -1,5 +1,5 @@
 #!/bin/bash
-function load {
+function LoadProfile {
 cd ~/ProfitTrailer
 cp application.properties application.properties.backup
 cp configuration.properties configuration.properties.backup
@@ -13,7 +13,7 @@ curl https://raw.githubusercontent.com/tomohern/PTS/$PROFILE/PAIRS.properties > 
 curl https://raw.githubusercontent.com/tomohern/PTS/$PROFILE/DCA.properties > trading/DCA.properties
 echo $PROFILE loaded.
 }
-function unload {
+function RestoreBackup {
 cd ~/ProfitTrailer
 cp application.properties.backup application.properties
 cp configuration.properties.backup configuration.properties
@@ -22,26 +22,20 @@ cp trading/INDICATORS.properties.backup trading/INDICATORS.properties
 cp trading/DCA.properties.backup trading/DCA.properties
 echo Backups restored
 }
-curl https://raw.githubusercontent.com/tomohern/PTS/master/profiles > ~/profiles.txt
-VALUES=$(<~/profiles.txt)
+VALUES=$(curl -s "https://api.github.com/repos/tomohern/PTS/branches" | grep '"name":' | sed -e 's/.*:\s\+"\([^"]\+\).*/\1/g' -e 's/master//g' -e 's/scripts//g' | tr '\n' ' ')
 OPTIONS="$VALUES Restore Quit"
 select opt in $OPTIONS; do
    if [ "$opt" = "Quit" ]; then
     echo done
     exit
-   elif [ "$opt" = "BTFD" ]; then
-    PROFILE=BTFD
-    load
-   elif [ "$opt" = "ccbull" ]; then
-    PROFILE=ccbull
-    load
-   elif [ "$opt" = "ccbear" ]; then
-    PROFILE=ccbear
-    load
    elif [ "$opt" = "Restore" ]; then
-    unload
+    RestoreBackup
+   elif [ "$opt" != "" ]; then
+    PROFILE=$opt
+    LoadProfile
    else
     clear
-    echo bad option
+    echo Bad Option
    fi
 done
+
