@@ -3,4 +3,5 @@ ver=$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/lates
 cd ~/new
 rm -rf ~/new/ProfitTrailer/
 wget https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip
+unzip ProfitTrailer.zip
 mv ProfitTrailer.zip ProfitTrailer_$ver.zip
