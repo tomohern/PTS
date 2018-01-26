@@ -1,9 +1,9 @@
 #!/bin/bash
 #Install needed scripts
 #
-sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr/local/bin/profittrailer
-sudo chmod +x /usr/local/bin/profittrailer
-sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
+sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > profittrailer
+sudo chmod +x profittrailer
+sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > loadprofile
 sudo chmod +x /usr/local/bin/loadprofile
-sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > /usr/local/bin/downloadLatestPT
+sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > downloadLatestPT
 sudo chmod +x /usr/local/bin/downloadLatestPT
