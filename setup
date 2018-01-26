@@ -7,15 +7,6 @@ unattended-upgrades -d
 apt install openjdk-8-jre-headless
 apt install unzip
 #
-#Install needed scripts
-#
-curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr/local/bin/profittrailer
-chmod +x /usr/local/bin/profittrailer
-curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
-chmod +x /usr/local/bin/loadprofile
-curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > /usr/local/bin/downloadLatestPT
-chmod +x /usr/local/bin/downloadLatestPT
-#
 # Create new user to run PT as 
 #
 read -p "Create New User? (If not, will continue as Root)" -n 1 -r
@@ -32,6 +23,20 @@ then
 else
 downloadLatestPT
 fi
+#
+#Install needed scripts
+#
+sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/updatescripts > /home/$uname/updatescripts
+sudo chmod +x /home/$uname/updatescripts
+updatescripts
+#
+#curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > /usr/local/bin/profittrailer
+#chmod +x /usr/local/bin/profittrailer
+#curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > /usr/local/bin/loadprofile
+#chmod +x /usr/local/bin/loadprofile
+#curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > /usr/local/bin/downloadLatestPT
+#chmod +x /usr/local/bin/downloadLatestPT
+
 
 
 
