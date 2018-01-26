@@ -1,28 +1,28 @@
 #!/bin/bash
+
+SOURCE=tomohern/PTSettings
+
 function LoadProfile {
 cd ~/ProfitTrailer
-cp application.properties application.properties.backup
 cp configuration.properties configuration.properties.backup
 cp trading/PAIRS.properties trading/PAIRS.properties.backup
 cp trading/INDICATORS.properties trading/INDICATORS.properties.backup
 cp trading/DCA.properties trading/DCA.properties.backup
-cp ~/app.prop/application.properties.$PROFILE application.properties
-curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/configuration.properties > configuration.properties
-curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/INDICATORS.properties > trading/INDICATORS.properties
-curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/PAIRS.properties > trading/PAIRS.properties
-curl https://raw.githubusercontent.com/tomohern/PTSettings/$PROFILE/DCA.properties > trading/DCA.properties
+curl https://raw.githubusercontent.com/$SOURCE/$PROFILE/configuration.properties > configuration.properties
+curl https://raw.githubusercontent.com/$SOURCE/$PROFILE/INDICATORS.properties > trading/INDICATORS.properties
+curl https://raw.githubusercontent.com/$SOURCE/$PROFILE/PAIRS.properties > trading/PAIRS.properties
+curl https://raw.githubusercontent.com/$SOURCE/$PROFILE/DCA.properties > trading/DCA.properties
 echo $PROFILE loaded.
 }
 function RestoreBackup {
 cd ~/ProfitTrailer
-cp application.properties.backup application.properties
 cp configuration.properties.backup configuration.properties
 cp trading/PAIRS.properties.backup trading/PAIRS.properties
 cp trading/INDICATORS.properties.backup trading/INDICATORS.properties
 cp trading/DCA.properties.backup trading/DCA.properties
 echo Backups restored
 }
-VALUES=$(curl -s "https://api.github.com/repos/tomohern/PTSettings/branches" | grep '"name":' | sed -e 's/.*:\s\+"\([^"]\+\).*/\1/g' -e 's/master/Default/g' | tr '\n' ' ')
+VALUES=$(curl -s "https://api.github.com/repos/$SOURCE/branches" | grep '"name":' | sed -e 's/.*:\s\+"\([^"]\+\).*/\1/g' -e 's/master/Default/g' | tr '\n' ' ')
 OPTIONS="$VALUES Restore Quit"
 select opt in $OPTIONS; do
    if [ "$opt" = "Quit" ]; then
