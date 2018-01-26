@@ -1,9 +1,9 @@
 #!/bin/bash
 ver=$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8)
 wget https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip
-unzip ProfitTrailer.zip
+#unzip ProfitTrailer.zip
 mv ProfitTrailer.zip ProfitTrailer_$ver.zip
-if [ ! -d "~/app.prop" ]; then
-  mkdir app.prop
-fi
-cp ProfitTrailer/application.properties app.prop/application.properties.DEFAULT
+#if [ ! -d "~/app.prop" ]; then
+#  mkdir app.prop
+#fi
+#cp ProfitTrailer/application.properties app.prop/application.properties.DEFAULT
