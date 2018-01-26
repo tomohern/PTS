@@ -4,6 +4,6 @@
 sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > profittrailer
 sudo chmod +x profittrailer
 sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > loadprofile
-sudo chmod +x /usr/local/bin/loadprofile
+sudo chmod +x loadprofile
 sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > downloadLatestPT
-sudo chmod +x /usr/local/bin/downloadLatestPT
+sudo chmod +x downloadLatestPT
