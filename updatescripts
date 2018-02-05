@@ -1,9 +1,14 @@
 #!/bin/bash
 #Install needed scripts
 #
+sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/updatescripts > updatescripts
+sudo chmod +x updatescripts
 sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/profittrailer > profittrailer
 sudo chmod +x profittrailer
 sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/loadprofile > loadprofile
 sudo chmod +x loadprofile
 sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/downloadLatestPT > downloadLatestPT
 sudo chmod +x downloadLatestPT
+sudo curl https://raw.githubusercontent.com/tomohern/PTS/scripts/swapPTjar > swapPTjar
+sudo chmod +x swapPTjar
+
