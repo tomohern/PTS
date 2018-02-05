@@ -2,4 +2,4 @@
 ver=$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8)
 rm -rf ~/new/ProfitTrailer/
 #wget -O ~/new/ProfitTrailer_$ver.zip https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip
-unzip ~/new/ProfitTrailer_$ver.zip
+unzip ~/new/ProfitTrailer_$ver.zip -d ~/new/
