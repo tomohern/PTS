@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf ProfitTrailerBackup
-cp -r ProfitTrailer ProfitTrailerBackup
+rm -rf ~/ProfitTrailerBackup
+cp -r ~/ProfitTrailer ~/ProfitTrailerBackup
 ps -ef | grep "sudo java -jar ProfitTrailer.jar" | awk '{print $2}' | head -1 | xargs sudo kill
 cp ~/new/ProfitTrailer/ProfitTrailer.jar ~/ProfitTrailer/ProfitTrailer.jar
