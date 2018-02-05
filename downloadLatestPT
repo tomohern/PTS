@@ -1,7 +1,6 @@
 #!/bin/bash
 ver=$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases/latest | grep 'browser_' | cut -d '/' -f8)
-cd ~/new
 rm -rf ~/new/ProfitTrailer/
-wget https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip
-unzip ProfitTrailer.zip
-mv ProfitTrailer.zip ProfitTrailer_$ver.zip
+wget -O ~/new/ProfitTrailer_$ver.zip https://github.com/taniman/profit-trailer/releases/download/$ver/ProfitTrailer.zip
+unzip ProfitTrailer_$ver.zip
+#mv ProfitTrailer.zip ProfitTrailer_$ver.zip
